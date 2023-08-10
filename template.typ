@@ -4,7 +4,9 @@
 #let verylargesize = 38pt
 #let hugesize = 48pt
 
-#let section(sectionTitle, logo) = {
+#let logo_light_image = state("logo_light_image", none)
+
+#let section(sectionTitle) = {
   set text(fill: white)
   set page(margin: 0pt, background: none)
   block(
@@ -27,10 +29,14 @@
       (90%, 90%),
       (90%, 20%)
   ))
-  place(top + right, dx: -0.5cm, dy: 0.5cm)[
-    #set image(width: 2.5cm)
-    #logo
-    ]
+    locate(loc => {
+        let logoLight = logo_light_image.at(loc)
+        place(top + right, dx: -0.5cm, dy: 0.5cm)[
+          #set image(width: 2.5cm)
+          #logoLight
+        ]
+    })
+
   place(bottom + right)[
       #pad(bottom: 0.5cm, right: 0.5cm)[
         #let lastpage-number = locate(pos => counter(page).final(pos).at(0))
@@ -149,6 +155,9 @@
         #cover
         ]
     }
+    #logo_light_image.update(x =>
+      logoLight
+    )
     #place(block(fill: rgb("00000077"), width: 100%, height: 100% + 1pt))
     #place(
       polygon(

@@ -1,7 +1,5 @@
 #import "../../template.typ": *
 
-#let logoLight = image("./logo_light.svg")
-
 #show: project.with(
   title: "Minimalist presentation template",
   subtitle: "This is where your presentation begins",
@@ -9,11 +7,11 @@
   date: "10/08/2023",
   indexTitle: "Contents",
   logo: image("./logo.svg"),
-  logoLight: logoLight,
+  logoLight: image("./logo_light.svg"),
   cover: image("./image_3.jpg")
 )
 
-#section("This is a section", logoLight)
+#section("This is a section")
 
 == This is a slide title
 
