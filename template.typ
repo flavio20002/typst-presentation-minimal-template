@@ -158,7 +158,7 @@
     #logo_light_image.update(x =>
       logoLight
     )
-    #place(block(fill: rgb("00000077"), width: 100%, height: 100% + 1pt))
+    #place(block(fill: rgb("000000AA"), width: 100%, height: 100% + 1pt))
     #place(
       polygon(
       fill: mainColor,
