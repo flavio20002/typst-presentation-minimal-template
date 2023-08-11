@@ -11,7 +11,7 @@
   cover: image("./image_3.jpg")
 )
 
-#section("This is a section")
+= This is a section
 
 == This is a slide title
 

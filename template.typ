@@ -6,48 +6,6 @@
 
 #let logo_light_image = state("logo_light_image", none)
 
-#let section(sectionTitle) = {
-  set text(fill: white)
-  set page(margin: 0pt, background: none)
-  block(
-      width: 100%, height: 100%, inset: (left: 2.6cm, right: 6cm), breakable: false, outset: 0em,
-      fill: rgb("#E30512"),
-  )[
-    #heading(level: 1, sectionTitle)
-  ]
-
-  place(top,
-      polygon(
-      fill: white,
-      (90%, 20%),
-      (90% - 1.2cm, 20%),
-      (90% - 1.2cm, 90%),
-      (90% - 1.2cm, 20%),
-      (90% - 1.2cm, 90% - 1.2cm),
-      (90% - 9cm,  90% - 1.2cm),
-      (90% - 9cm,  90%),
-      (90%, 90%),
-      (90%, 20%)
-  ))
-    locate(loc => {
-        let logoLight = logo_light_image.at(loc)
-        place(top + right, dx: -0.5cm, dy: 0.5cm)[
-          #set image(width: 2.5cm)
-          #logoLight
-        ]
-    })
-
-  place(bottom + right)[
-      #pad(bottom: 0.5cm, right: 0.5cm)[
-        #let lastpage-number = locate(pos => counter(page).final(pos).at(0))
-        #set align(right)
-        #text(size: scriptsize)[
-          #counter(page).display("1 / 1", both: true)
-        ]
-      ]
-  ]
-}
-
 #let columns-content(..args) = {
   let slide-info = args.named()
   let bodies = args.pos()
@@ -187,11 +145,50 @@
   ]
 
   set page(
-    background: [
-      #slideLogo(logo)
-      #slidePolygon()
-      #pageNumber()
-    ],
+    background: locate(loc => {
+    let next-headings = query(heading.where(level: 1).before(loc), loc)
+    if next-headings != () and next-headings.first().location().page() == loc.page() {
+      rect(width: 100%, height: 100%, fill: mainColor)
+      place(top,
+        polygon(
+        fill: white,
+        (90%, 20%),
+        (90% - 1.2cm, 20%),
+        (90% - 1.2cm, 90%),
+        (90% - 1.2cm, 20%),
+        (90% - 1.2cm, 90% - 1.2cm),
+        (90% - 9cm,  90% - 1.2cm),
+        (90% - 9cm,  90%),
+        (90%, 90%),
+        (90%, 20%)
+      ))
+
+      locate(loc => {
+          let logoLight = logo_light_image.at(loc)
+          place(top + right, dx: -0.5cm, dy: 0.5cm)[
+            #set image(width: 2.5cm)
+            #logoLight
+          ]
+      })
+
+      place(bottom + right)[
+          #pad(bottom: 0.5cm, right: 0.5cm)[
+            #let lastpage-number = locate(pos => counter(page).final(pos).at(0))
+            #set align(right)
+            #text(fill: white, size: scriptsize)[
+              #counter(page).display("1 / 1", both: true)
+            ]
+          ]
+      ]
+    }
+    else{
+      [
+        #slideLogo(logo)
+        #slidePolygon()
+        #pageNumber()
+      ]
+    }
+    }),
     margin: (top:1cm, bottom: 1.5cm, left: 2.6cm, right: 1cm)
   )
 
@@ -210,8 +207,9 @@
   ]
 
   show heading.where(level: 1): it => [
-    #set text(hugesize, weight: "black")
-    #it.body
+    #pagebreak(weak: true)
+    #set text(hugesize, fill: white, weight: "black")
+    #move(dy: 0.25cm, it.body)
   ]
 
   show heading.where(level: 2): it => {
