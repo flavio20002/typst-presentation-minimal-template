@@ -49,7 +49,7 @@
   body
 ) = {
   set document(title: title, author: author)
-  set text(font: "Lato", fill: textColorDark, size: 20pt, lang: "it")
+  set text(fill: textColorDark, size: 20pt, lang: "it")
   set underline(offset: 3pt)
   set page(
     paper: "presentation-" + aspect-ratio,
@@ -57,9 +57,6 @@
   )
 
   set list(tight:true, indent: 0.27cm ,body-indent: 0.7cm, marker: (place(center, dy: -0.5em, text(size: 2em, fill: mainColor, "▶")), place(center, dy: -0.2em, text(size: 1.3em, fill: mainColor, "■"))))
-
-  show math.equation: set text(font: "Fira Math")
-  show raw: set text(font: "Fira Code")
 
   set figure(gap: 20pt)
   show figure: it => [

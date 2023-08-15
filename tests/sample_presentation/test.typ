@@ -1,5 +1,9 @@
 #import "../../template.typ": *
 
+#set text(font: "Lato")
+#show math.equation: set text(font: "Lato Math")
+#show raw: set text(font: "Fira Code")
+
 #show: project.with(
   title: "Minimalist presentation template",
   subtitle: "This is where your presentation begins",
