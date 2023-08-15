@@ -6,6 +6,8 @@
 
 #let logo_light_image = state("logo_light_image", none)
 
+#let section_page = state("section_page", false)
+
 #let columns-content(..args) = {
   let slide-info = args.named()
   let bodies = args.pos()
@@ -146,8 +148,7 @@
 
   set page(
     background: locate(loc => {
-    let next-headings = query(heading.where(level: 1).before(loc), loc)
-    if next-headings != () and next-headings.first().location().page() == loc.page() {
+    if section_page.at(loc) {
       rect(width: 100%, height: 100%, fill: mainColor)
       place(top,
         polygon(
@@ -198,7 +199,7 @@
   align(top)[#text(size: verylargesize, weight: "black", indexTitle)]
   locate(loc => {
       let elems = query(selector(heading.where(level: 1)).after(loc), loc)
-      list(..elems.map(elem => {link(elem.location(),elem.body)}))
+      list(..elems.map(elem => {link((page: elem.location().page() + 1, x: 0pt, y: 0pt),elem.body)}))
   })
 
   show link: it => [
@@ -207,12 +208,18 @@
   ]
 
   show heading.where(level: 1): it => [
+    #section_page.update(x =>
+      true
+    )
     #pagebreak(weak: true)
     #set text(hugesize, fill: white, weight: "black")
     #move(dy: 0.25cm, it.body)
   ]
 
   show heading.where(level: 2): it => {
+    section_page.update(x =>
+      false
+    )
     pagebreak()
     set text(verylargesize, weight: "black")
     align(top, it.body)

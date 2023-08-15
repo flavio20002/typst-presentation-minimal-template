@@ -55,3 +55,27 @@
     caption: [An image],
   ) <image_label_3>
 ]
+
+= This is a section
+
+== This is a slide title
+
+#lorem(10)
+
+= This is a section
+
+== This is a slide title
+
+#lorem(10)
+
+= This is a section
+
+== This is a slide title
+
+#lorem(10)
+
+= This is a section
+
+== This is a slide title
+
+#lorem(10)
