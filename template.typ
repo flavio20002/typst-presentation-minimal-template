@@ -219,7 +219,7 @@
     )
     pagebreak()
     set text(verylargesize, weight: "black")
-    align(top, it.body)
+    align(top, pad(right: if logo!= none {2.5cm} else {0cm}, it.body))
     v(0.5cm)
   }
 

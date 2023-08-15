@@ -80,6 +80,4 @@
 
 = This is a section
 
-== This is a slide title
-
-#lorem(10)
+== This is a very v v v v v v v v v v v v v v v v v v v v  long slide title
