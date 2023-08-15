@@ -210,7 +210,7 @@
     )
     #pagebreak(weak: true)
     #set text(hugesize, fill: white, weight: "black")
-    #move(dy: 0.25cm, it.body)
+    #move(dy: 0.25cm, pad(right:5cm, it.body))
   ]
 
   show heading.where(level: 2): it => {

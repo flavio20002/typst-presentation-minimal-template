@@ -78,6 +78,6 @@
 
 #lorem(10)
 
-= This is a section
+= This is a very v v v v v v v v v v v v v v v v v v v v  long section
 
 == This is a very v v v v v v v v v v v v v v v v v v v v  long slide title
