@@ -64,6 +64,11 @@
     #it
   ]
 
+  show raw: it => [
+    #set text(size: scriptsize)
+    #it
+  ]
+
   let pageNumberInt() = {
     let lastpage-number = locate(pos => counter(page).final(pos).at(0))
     set align(right)
