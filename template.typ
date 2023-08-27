@@ -64,10 +64,7 @@
     #it
   ]
 
-  show raw: it => [
-    #set text(size: scriptsize)
-    #it
-  ]
+  show raw: set text(size: 12pt)
 
   let pageNumberInt() = {
     let lastpage-number = locate(pos => counter(page).final(pos).at(0))
