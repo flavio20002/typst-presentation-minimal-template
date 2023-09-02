@@ -2,7 +2,7 @@
 #let normalsize = 25pt
 #let largesize = 30pt
 #let verylargesize = 38pt
-#let hugesize = 48pt
+#let hugesize = 58pt
 
 #let logo_light_image = state("logo_light_image", none)
 
@@ -56,7 +56,10 @@
     margin: 0pt,
   )
 
-  set list(tight:true, indent: 0.27cm ,body-indent: 0.7cm, marker: (place(center, dy: -0.5em, text(size: 2em, fill: mainColor, "▶")), place(center, dy: -0.2em, text(size: 1.3em, fill: mainColor, "■"))))
+  set list(tight:true, indent: 0.27cm ,body-indent: 0.7cm, marker: (place(center, dy: -0.25em, text(size: 1.5em, fill: mainColor, "▶")), place(center, dy: -0.2em, text(size: 1.3em, fill: mainColor, "■"))))
+
+  set enum(numbering: (..args) => text(fill:mainColor, numbering("1.", ..args)))
+
 
   set figure(gap: 20pt)
   show figure: it => [
@@ -89,10 +92,10 @@
   let slidePolygon() = {
     place(top+left, polygon(
         fill: mainColor,
-        (1cm, 0%),
-        (1cm, 100%),
-        (1.6cm, 100%),
-        (1.6cm,  0%),
+        (0cm, 0cm),
+        (0cm, 3cm),
+        (0.4cm, 3cm),
+        (0.4cm, 0cm),
     ))
   }
 
@@ -131,7 +134,7 @@
     #pad(left: 2.6cm, right: 10cm, y: 1.5cm)[
       #v(1fr)
       #block(width: 15cm)[ #par(leading: 1cm)[
-          #text(size: hugesize, weight: "black", upper(title))
+          #text(size: hugesize, weight: "bold", upper(title))
       ]]
       #v(0.5cm)      
       #text(size: normalsize, weight: "black", subtitle)
@@ -189,16 +192,16 @@
       ]
     }
     }),
-    margin: (top:1cm, bottom: 1.5cm, left: 2.6cm, right: 1cm)
+    margin: (top:4cm, bottom: 1cm, left: 1.5cm, right: 1.5cm)
   )
 
   set align(horizon)
 
   // Display the summary page.
-  align(top)[#text(size: verylargesize, weight: "black", indexTitle)]
+  place(top + left, dy: -4cm,  block(height: 3cm, width: if logo!= none {100% - 2.5cm} else {100%}, align(horizon, text(size: verylargesize, weight: "regular", indexTitle))))
   locate(loc => {
       let elems = query(selector(heading.where(level: 1)).after(loc), loc)
-      list(..elems.map(elem => {link((page: elem.location().page() + 1, x: 0pt, y: 0pt),elem.body)}))
+      enum(tight: false, ..elems.map(elem => {link((page: elem.location().page() + 1, x: 0pt, y: 0pt),elem.body)}))
   })
 
   show link: it => [
@@ -211,8 +214,8 @@
       true
     )
     #pagebreak(weak: true)
-    #set text(hugesize, fill: white, weight: "black")
-    #move(dy: 0.25cm, pad(right:5cm, it.body))
+    #set text(hugesize, fill: white, weight: "bold")
+    #move(dy: -1.5cm, place(horizon, pad(right:5cm, upper(it.body))))
   ]
 
   show heading.where(level: 2): it => {
@@ -220,9 +223,8 @@
       false
     )
     pagebreak()
-    set text(verylargesize, weight: "black")
-    align(top, pad(right: if logo!= none {2.5cm} else {0cm}, it.body))
-    v(0.5cm)
+    set text(verylargesize, weight: "regular")
+    place(top + left, dy: -4cm,  block(height: 3cm, width: if logo!= none {100% - 2.5cm} else {100%}, align(horizon, it.body)))
   }
 
   // Add the body.
