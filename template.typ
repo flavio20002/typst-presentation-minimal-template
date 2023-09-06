@@ -131,19 +131,19 @@
     ))
 
     #slideLogo(logoLight)
-    #pad(left: 2.6cm, right: 10cm, y: 1.5cm)[
+    #pad(left: 1.5cm, right: 10cm, y: 1.5cm)[
       #v(1fr)
       #block(width: 15cm)[ #par(leading: 1cm)[
-          #text(size: hugesize, weight: "bold", upper(title))
+          #text(size: 62pt, weight: "regular", upper(title))
       ]]
       #v(0.5cm)      
-      #text(size: normalsize, weight: "black", subtitle)
+      #text(size: 30pt, weight: "regular", subtitle)
       #v(1fr)
       #if author != none {
-          text(size: scriptsize)[#author]
+          text(size: 20pt)[#author]
       } --
       #if date != none {
-          text(size: scriptsize)[#date]
+          text(size: 20pt)[#date]
       }
     ]
   ]
