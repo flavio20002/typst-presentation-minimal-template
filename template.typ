@@ -113,14 +113,14 @@
     #set text(fill: textColorLight)
     #if (cover != none){
       place()[
-        #set image(width: 100%, height: 100% + 1pt)
+        #set image(width: 100%, height: 100%)
         #cover
         ]
     }
     #logo_light_image.update(x =>
       logoLight
     )
-    #place(block(fill: rgb("000000AA"), width: 100%, height: 100% + 1pt))
+    #place(block(fill: rgb("000000C2"), width: 100%, height: 100% + 1pt))
     #place(
       polygon(
       fill: mainColor,
