@@ -1,5 +1,5 @@
 #let scriptsize = 15pt
-#let normalsize = 25pt
+#let normalsize = 20pt
 #let largesize = 30pt
 #let verylargesize = 38pt
 #let hugesize = 58pt
@@ -49,7 +49,7 @@
   body
 ) = {
   set document(title: title, author: author)
-  set text(fill: textColorDark, size: 20pt, lang: "it")
+  set text(fill: textColorDark, size: normalsize, lang: "it")
   set underline(offset: 3pt)
   set page(
     paper: "presentation-" + aspect-ratio,
@@ -140,10 +140,10 @@
       #text(size: 30pt, weight: "regular", subtitle)
       #v(1fr)
       #if author != none {
-          text(size: 20pt)[#author]
+          text(size: normalsize)[#author]
       } --
       #if date != none {
-          text(size: 20pt)[#date]
+          text(size: normalsize)[#date]
       }
     ]
   ]
@@ -225,6 +225,15 @@
     pagebreak()
     set text(verylargesize, weight: "regular")
     place(top + left, dy: -4cm,  block(height: 3cm, width: if logo!= none {100% - 2.5cm} else {100%}, align(horizon, it.body)))
+  }
+
+  show heading.where(level: 3): it => {
+    pagebreak()
+    locate(loc => {
+        let elems = query(selector(heading.where(level: 2)).before(loc), loc)
+        let heading2 = elems.last().body
+        place(top + left, dy: -4cm,  block(height: 3cm, width: if logo!= none {100% - 2.5cm} else {100%}, align(horizon, [#block(below: 0em, above: 0em, text(heading2, size: verylargesize, weight: "regular")) #block(below: 0em, above: 0.65em, text(it.body, size: normalsize, weight: "regular"))])))
+    })
   }
 
   // Add the body.

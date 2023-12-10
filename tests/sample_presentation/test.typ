@@ -81,3 +81,29 @@
 = This is a very v v v v v v v v v v v v v v v v v v v v  long section
 
 == This is a very v v v v v v v v v v v v v v v v v v v v  long slide title
+
+= Subtitle test
+
+== Slide title
+
+#lorem(50)
+
+=== Slide subtitle 1
+
+#lorem(50)
+
+=== Slide subtitle 2
+
+#lorem(50)
+
+== Slide title 2
+
+#lorem(50)
+
+=== Slide subtitle 3
+
+#lorem(50)
+
+=== Slide subtitle 4
+
+#lorem(50)
