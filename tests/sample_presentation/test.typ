@@ -82,7 +82,7 @@
 
 == This is a very v v v v v v v v v v v v v v v v v v v v  long slide title
 
-= sub-title test
+= Subtitle test
 
 == Slide title
 
