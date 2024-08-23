@@ -92,7 +92,7 @@
 
 #lorem(50)
 
-=== Slide sub-title 2
+=== Slide subtitle 2
 
 #lorem(50)
 
@@ -100,10 +100,10 @@
 
 #lorem(50)
 
-=== Slide sub-title 3
+=== Slide subtitle 3
 
 #lorem(50)
 
-=== Slide sub-title 4
+=== Slide subtitle 4
 
 #lorem(50)
