@@ -1,8 +1,8 @@
 Minimalist presentation template written in Typst. An example pdf in the Release section of this project.
 
-To compile the example:
+To compile the example template:
 
-    typst watch ./example/example.typ --root . --font-path fonts
+    typst watch ./template/main.typ --root . --font-path fonts
 
 # Sample
 

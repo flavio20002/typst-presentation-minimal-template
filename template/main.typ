@@ -1,4 +1,4 @@
-#import "../template.typ": *
+#import "../lib.typ": *
 
 #set text(font: "Lato")
 #show math.equation: set text(font: "Lato Math")
@@ -6,12 +6,12 @@
 
 #show: project.with(
   title: "Minimalist presentation template",
-  subtitle: "This is where your presentation begins",
+  sub-title: "This is where your presentation begins",
   author: "Flavio Barisi",
   date: "10/08/2023",
-  indexTitle: "Contents",
+  index-title: "Contents",
   logo: image("./logo.svg"),
-  logoLight: image("./logo_light.svg"),
+  logo-light: image("./logo_light.svg"),
   cover: image("./image_3.jpg")
 )
 
@@ -82,17 +82,17 @@
 
 == This is a very v v v v v v v v v v v v v v v v v v v v  long slide title
 
-= Subtitle test
+= sub-title test
 
 == Slide title
 
 #lorem(50)
 
-=== Slide subtitle 1
+=== Slide sub-title 1
 
 #lorem(50)
 
-=== Slide subtitle 2
+=== Slide sub-title 2
 
 #lorem(50)
 
@@ -100,10 +100,10 @@
 
 #lorem(50)
 
-=== Slide subtitle 3
+=== Slide sub-title 3
 
 #lorem(50)
 
-=== Slide subtitle 4
+=== Slide sub-title 4
 
 #lorem(50)

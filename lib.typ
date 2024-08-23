@@ -1,12 +1,12 @@
-#let scriptsize = 15pt
-#let normalsize = 20pt
-#let largesize = 30pt
-#let verylargesize = 38pt
-#let hugesize = 58pt
+#let script-size = 15pt
+#let normal-size = 20pt
+#let large-size = 30pt
+#let very-large-size = 38pt
+#let huge-size = 58pt
 
-#let logo_light_image = state("logo_light_image", none)
+#let logo-light-image = state("logo-light-image", none)
 
-#let section_page = state("section_page", false)
+#let section-page = state("section-page", false)
 
 #let columns-content(..args) = {
   let slide-info = args.named()
@@ -35,63 +35,63 @@
 
 #let project(
   title: [Title],
-  subtitle: [Subtitle],
+  sub-title: [sub-title],
   author: none,
   date: none,
   aspect-ratio: "16-9",
-  mainColor: rgb("#E30512"),
-  textColorLight: white,
-  textColorDark: black,
+  main-color: rgb("#E30512"),
+  text-color-light: white,
+  text-color-dark: black,
   cover: none, 
   logo: none,
-  logoLight: none,
-  indexTitle: none,
+  logo-light: none,
+  index-title: none,
   body
 ) = {
   set document(title: title, author: author)
-  set text(fill: textColorDark, size: normalsize, lang: "it")
+  set text(fill: text-color-dark, size: normal-size, lang: "it")
   set underline(offset: 3pt)
   set page(
     paper: "presentation-" + aspect-ratio,
     margin: 0pt,
   )
 
-  set list(tight:true, indent: 0.27cm ,body-indent: 0.7cm, marker: (place(center, dy: -0.25em, text(size: 1.5em, fill: mainColor, "▶")), place(center, dy: -0.2em, text(size: 1.3em, fill: mainColor, "■"))))
+  set list(tight:true, indent: 0.27cm ,body-indent: 0.7cm, marker: (place(center, dy: -0.25em, text(size: 1.5em, fill: main-color, "▶")), place(center, dy: -0.2em, text(size: 1.3em, fill: main-color, "■"))))
 
-  set enum(numbering: (..args) => text(fill:mainColor, numbering("1.", ..args)))
+  set enum(numbering: (..args) => text(fill:main-color, numbering("1.", ..args)))
 
 
   set figure(gap: 20pt)
   show figure: it => [
-    #set text(size: scriptsize)
+    #set text(size: script-size)
     #it
   ]
 
   show raw: set text(size: 12pt)
 
-  let pageNumberInt() = {
+  let page-number-int() = {
     let lastpage-number = locate(pos => counter(page).final(pos).at(0))
     set align(right)
-    text(size: scriptsize)[
+    text(size: script-size)[
       #counter(page).display("1 / 1", both: true)
     ]
   }
 
-  let pageNumber() = {
+  let page-number() = {
      place(bottom + right)[
       #pad(bottom: 0.5cm, right: 0.5cm)[
         #let lastpage-number = locate(pos => counter(page).final(pos).at(0))
         #set align(right)
-        #text(size: scriptsize)[
+        #text(size: script-size)[
           #counter(page).display("1 / 1", both: true)
         ]
       ]
     ]
   }
 
-  let slidePolygon() = {
+  let slide-polygon() = {
     place(top+left, polygon(
-        fill: mainColor,
+        fill: main-color,
         (0cm, 0cm),
         (0cm, 3cm),
         (0.4cm, 3cm),
@@ -99,7 +99,7 @@
     ))
   }
 
-  let slideLogo(theLogo) = {
+  let slide-logo(theLogo) = {
     if theLogo!= none {
     place(top + right, dx: -0.5cm, dy: 0.5cm)[
       #set image(width: 2.5cm)
@@ -110,48 +110,48 @@
 
   // Display the title page.
   page(margin: 0pt)[
-    #set text(fill: textColorLight)
+    #set text(fill: text-color-light)
     #if (cover != none){
       place()[
         #set image(width: 100%, height: 100%)
         #cover
         ]
     }
-    #logo_light_image.update(x =>
-      logoLight
+    #logo-light-image.update(x =>
+      logo-light
     )
     #place(block(fill: rgb("000000C2"), width: 100%, height: 100% + 1pt))
     #place(
       polygon(
-      fill: mainColor,
+      fill: main-color,
       (100%, 0%),
       (55%, 0%),
       (80%, 100%),
       (100%,  100%),
     ))
 
-    #slideLogo(logoLight)
+    #slide-logo(logo-light)
     #pad(left: 1.5cm, right: 10cm, y: 1.5cm)[
       #v(1fr)
       #block(width: 15cm)[ #par(leading: 1cm)[
           #text(size: 62pt, weight: "regular", upper(title))
       ]]
       #v(0.5cm)      
-      #text(size: 30pt, weight: "regular", subtitle)
+      #text(size: 30pt, weight: "regular", sub-title)
       #v(1fr)
       #if author != none {
-          text(size: normalsize)[#author]
+          text(size: normal-size)[#author]
       } --
       #if date != none {
-          text(size: normalsize)[#date]
+          text(size: normal-size)[#date]
       }
     ]
   ]
 
   set page(
     background: locate(loc => {
-    if section_page.at(loc) {
-      rect(width: 100%, height: 100%, fill: mainColor)
+    if section-page.at(loc) {
+      rect(width: 100%, height: 100%, fill: main-color)
       place(top,
         polygon(
         fill: white,
@@ -167,10 +167,10 @@
       ))
 
       locate(loc => {
-          let logoLight = logo_light_image.at(loc)
+          let logo-light = logo-light-image.at(loc)
           place(top + right, dx: -0.5cm, dy: 0.5cm)[
             #set image(width: 2.5cm)
-            #logoLight
+            #logo-light
           ]
       })
 
@@ -178,7 +178,7 @@
           #pad(bottom: 0.5cm, right: 0.5cm)[
             #let lastpage-number = locate(pos => counter(page).final(pos).at(0))
             #set align(right)
-            #text(fill: white, size: scriptsize)[
+            #text(fill: white, size: script-size)[
               #counter(page).display("1 / 1", both: true)
             ]
           ]
@@ -186,9 +186,9 @@
     }
     else{
       [
-        #slideLogo(logo)
-        #slidePolygon()
-        #pageNumber()
+        #slide-logo(logo)
+        #slide-polygon()
+        #page-number()
       ]
     }
     }),
@@ -198,32 +198,32 @@
   set align(horizon)
 
   // Display the summary page.
-  place(top + left, dy: -4cm,  block(height: 3cm, width: if logo!= none {100% - 2.5cm} else {100%}, align(horizon, text(size: verylargesize, weight: "regular", indexTitle))))
+  place(top + left, dy: -4cm,  block(height: 3cm, width: if logo!= none {100% - 2.5cm} else {100%}, align(horizon, text(size: very-large-size, weight: "regular", index-title))))
   locate(loc => {
       let elems = query(selector(heading.where(level: 1)).after(loc), loc)
       enum(tight: false, ..elems.map(elem => {link((page: elem.location().page() + 1, x: 0pt, y: 0pt),elem.body)}))
   })
 
   show link: it => [
-    #set text(fill: mainColor)
+    #set text(fill: main-color)
     #underline(it)
   ]
 
   show heading.where(level: 1): it => [
-    #section_page.update(x =>
+    #section-page.update(x =>
       true
     )
     #pagebreak(weak: true)
-    #set text(hugesize, fill: white, weight: "bold")
+    #set text(huge-size, fill: white, weight: "bold")
     #move(dy: -1.5cm, place(horizon, pad(right:5cm, upper(it.body))))
   ]
 
   show heading.where(level: 2): it => {
-    section_page.update(x =>
+    section-page.update(x =>
       false
     )
     pagebreak()
-    set text(verylargesize, weight: "regular")
+    set text(very-large-size, weight: "regular")
     place(top + left, dy: -4cm,  block(height: 3cm, width: if logo!= none {100% - 2.5cm} else {100%}, align(horizon, it.body)))
   }
 
@@ -232,7 +232,7 @@
     locate(loc => {
         let elems = query(selector(heading.where(level: 2)).before(loc), loc)
         let heading2 = elems.last().body
-        place(top + left, dy: -4cm,  block(height: 3cm, width: if logo!= none {100% - 2.5cm} else {100%}, align(horizon, [#block(below: 0em, above: 0em, text(heading2, size: verylargesize, weight: "regular")) #block(below: 0em, above: 0.65em, text(it.body, size: normalsize, weight: "regular"))])))
+        place(top + left, dy: -4cm,  block(height: 3cm, width: if logo!= none {100% - 2.5cm} else {100%}, align(horizon, [#block(below: 0em, above: 0em, text(heading2, size: very-large-size, weight: "regular")) #block(below: 0em, above: 0.65em, text(it.body, size: normal-size, weight: "regular"))])))
     })
   }
 
