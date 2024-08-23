@@ -88,7 +88,7 @@
 
 #lorem(50)
 
-=== Slide sub-title 1
+=== Slide subtitle 1
 
 #lorem(50)
 
