@@ -1,8 +1,8 @@
-#import "../lib.typ": *
+#import "@preview/minimal-presentation:0.1.0": *
 
-//#set text(font: "Lato")
-//#show math.equation: set text(font: "Lato Math")
-//#show raw: set text(font: "Fira Code")
+#set text(font: "Lato")
+#show math.equation: set text(font: "Lato Math")
+#show raw: set text(font: "Fira Code")
 
 #show: project.with(
   title: "Minimalist presentation template",
@@ -12,7 +12,7 @@
   index-title: "Contents",
   logo: image("./logo.svg"),
   logo-light: image("./logo_light.svg"),
-  cover: image("./image_3.jpg")
+  cover: image("./image_1.jpg")
 )
 
 = This is a section
@@ -55,7 +55,7 @@
   - #lorem(10)
 ][
   #figure(
-    image("image_3.jpg", width: 100%),
+    image("image_1.jpg", width: 100%),
     caption: [An image],
   ) <image_label_3>
 ]
