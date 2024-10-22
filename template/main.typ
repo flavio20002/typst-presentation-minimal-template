@@ -1,8 +1,8 @@
-#import "@preview/minimal-presentation:0.1.0": *
+#import "../lib.typ": *
 
-#set text(font: "Lato")
-#show math.equation: set text(font: "Lato Math")
-#show raw: set text(font: "Fira Code")
+//#set text(font: "Lato")
+//#show math.equation: set text(font: "Lato Math")
+//#show raw: set text(font: "Fira Code")
 
 #show: project.with(
   title: "Minimalist presentation template",
