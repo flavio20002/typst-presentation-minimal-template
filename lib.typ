@@ -70,7 +70,7 @@
   show raw: set text(size: 12pt)
 
   let page-number-int() = {
-    let lastpage-number = locate(pos => counter(page).final(pos).at(0))
+    let lastpage-number = context{counter(page).final(here()).at(0)}
     set align(right)
     text(size: script-size)[
       #counter(page).display("1 / 1", both: true)
@@ -80,7 +80,7 @@
   let page-number() = {
      place(bottom + right)[
       #pad(bottom: 0.5cm, right: 0.5cm)[
-        #let lastpage-number = locate(pos => counter(page).final(pos).at(0))
+        #let lastpage-number = context{counter(page).final(here()).at(0)}
         #set align(right)
         #text(size: script-size)[
           #counter(page).display("1 / 1", both: true)
@@ -149,8 +149,8 @@
   ]
 
   set page(
-    background: locate(loc => {
-    if section-page.at(loc) {
+    background: context{
+    if section-page.at(here()) {
       rect(width: 100%, height: 100%, fill: main-color)
       place(top,
         polygon(
@@ -166,17 +166,17 @@
         (90%, 20%)
       ))
 
-      locate(loc => {
-          let logo-light = logo-light-image.at(loc)
+      context{
+          let logo-light = logo-light-image.at(here())
           place(top + right, dx: -0.5cm, dy: 0.5cm)[
             #set image(width: 2.5cm)
             #logo-light
           ]
-      })
+      }
 
       place(bottom + right)[
           #pad(bottom: 0.5cm, right: 0.5cm)[
-            #let lastpage-number = locate(pos => counter(page).final(pos).at(0))
+            #let lastpage-number = context{counter(page).final(here()).at(0)}
             #set align(right)
             #text(fill: white, size: script-size)[
               #counter(page).display("1 / 1", both: true)
@@ -191,7 +191,7 @@
         #page-number()
       ]
     }
-    }),
+    },
     margin: (top:4cm, bottom: 1cm, left: 1.5cm, right: 1.5cm)
   )
 
@@ -199,10 +199,10 @@
 
   // Display the summary page.
   place(top + left, dy: -4cm,  block(height: 3cm, width: if logo!= none {100% - 2.5cm} else {100%}, align(horizon, text(size: very-large-size, weight: "regular", index-title))))
-  locate(loc => {
-      let elems = query(selector(heading.where(level: 1)).after(loc), loc)
+  context{
+      let elems = query(selector(heading.where(level: 1)).after(here()))
       enum(tight: false, ..elems.map(elem => {link((page: elem.location().page() + 1, x: 0pt, y: 0pt),elem.body)}))
-  })
+  }
 
   show link: it => [
     #set text(fill: main-color)
@@ -229,11 +229,11 @@
 
   show heading.where(level: 3): it => {
     pagebreak()
-    locate(loc => {
-        let elems = query(selector(heading.where(level: 2)).before(loc), loc)
+    context{
+        let elems = query(selector(heading.where(level: 2)).before(here()))
         let heading2 = elems.last().body
         place(top + left, dy: -4cm,  block(height: 3cm, width: if logo!= none {100% - 2.5cm} else {100%}, align(horizon, [#block(below: 0em, above: 0em, text(heading2, size: very-large-size, weight: "regular")) #block(below: 0em, above: 0.65em, text(it.body, size: normal-size, weight: "regular"))])))
-    })
+    }
   }
 
   // Add the body.
