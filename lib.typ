@@ -60,12 +60,9 @@
 
   set enum(numbering: (..args) => text(fill:main-color, numbering("1.", ..args)))
 
-
   set figure(gap: 20pt)
-  show figure: it => [
-    #set text(size: script-size)
-    #it
-  ]
+
+  show figure.caption: set text(script-size)
 
   show raw: set text(size: 12pt)
 
