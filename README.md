@@ -26,6 +26,7 @@ This template exports the `project` function with the following named arguments:
 - `title`: The book's title as content.
 - `sub-title`: The book's subtitle as content.
 - `author`: Content or an array of content to specify the author.
+- `main-color`: The main color of the template.
 - `aspect-ratio`: Defaults to `16-9`. Can be also `4-3`.
 
 The function also accepts a single, positional argument for the body of the
@@ -50,7 +51,8 @@ use this template, you can add a show rule like this at the top of your file:
   index-title: "Contents",
   logo: image("./logo.svg"),
   logo-light: image("./logo_light.svg"),
-  cover: image("./image_3.jpg")
+  cover: image("./image_3.jpg"),
+  main-color: rgb("#E30512"),
 )
 
 = This is a section

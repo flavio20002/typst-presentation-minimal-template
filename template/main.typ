@@ -12,7 +12,8 @@
   index-title: "Contents",
   logo: image("./logo.svg"),
   logo-light: image("./logo_light.svg"),
-  cover: image("./image_1.jpg")
+  cover: image("./image_1.jpg"),
+  main-color: rgb("#E30512"),
 )
 
 = This is a section
@@ -105,5 +106,13 @@
 #lorem(50)
 
 === Slide sub-title 4
+
+#lorem(50)
+
+#set-main-color(blue)
+
+= You can change color
+
+== Slide title
 
 #lorem(50)
