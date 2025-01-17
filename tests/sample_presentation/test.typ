@@ -83,17 +83,17 @@
 
 == This is a very v v v v v v v v v v v v v v v v v v v v  long slide title
 
-= sub-title test
+= Subtitle test
 
 == Slide title
 
 #lorem(50)
 
-=== Slide sub-title 1
+=== Slide subtitle 1
 
 #lorem(50)
 
-=== Slide sub-title 2
+=== Slide subtitle 2
 
 #lorem(50)
 
@@ -101,11 +101,11 @@
 
 #lorem(50)
 
-=== Slide sub-title 3
+=== Slide subtitle 3
 
 #lorem(50)
 
-=== Slide sub-title 4
+=== Slide subtitle 4
 
 #lorem(50)
 
