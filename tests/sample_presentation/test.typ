@@ -12,7 +12,8 @@
   index-title: "Contents",
   logo: image("./logo.svg"),
   logo-light: image("./logo_light.svg"),
-  cover: image("./image_3.jpg")
+  cover: image("./image_1.jpg"),
+  main-color: rgb("#E30512"),
 )
 
 = This is a section
@@ -55,7 +56,7 @@
   - #lorem(10)
 ][
   #figure(
-    image("image_3.jpg", width: 100%),
+    image("image_1.jpg", width: 100%),
     caption: [An image],
   ) <image_label_3>
 ]
@@ -82,17 +83,17 @@
 
 == This is a very v v v v v v v v v v v v v v v v v v v v  long slide title
 
-= Subtitle test
+= sub-title test
 
 == Slide title
 
 #lorem(50)
 
-=== Slide subtitle 1
+=== Slide sub-title 1
 
 #lorem(50)
 
-=== Slide subtitle 2
+=== Slide sub-title 2
 
 #lorem(50)
 
@@ -100,10 +101,18 @@
 
 #lorem(50)
 
-=== Slide subtitle 3
+=== Slide sub-title 3
 
 #lorem(50)
 
-=== Slide subtitle 4
+=== Slide sub-title 4
+
+#lorem(50)
+
+#set-main-color(blue)
+
+= You can change color
+
+== Slide title
 
 #lorem(50)
