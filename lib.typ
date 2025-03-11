@@ -54,13 +54,14 @@
   logo: none,
   logo-light: none,
   index-title: none,
+  lang: "en",
   body
 ) = {
   set document(title: title, author: author)
   main-color-state.update(x =>
     main-color
   )
-  set text(fill: text-color-dark, size: normal-size, lang: "it")
+  set text(fill: text-color-dark, size: normal-size, lang: lang)
   set underline(offset: 3pt)
   set page(
     paper: "presentation-" + aspect-ratio,
