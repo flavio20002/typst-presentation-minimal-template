@@ -214,12 +214,10 @@
     let elems = query(selector(heading.where(level: 1)).after(here()))
     enum(tight: false, ..elems.map(elem => {link((page: elem.location().page() + 1, x: 0pt, y: 0pt),elem.body)}))
   }
-
-    show link: it => [
-    #set text(fill: main-color)
-      #underline(it)
-    ]
-
+  
+    show link: it => underline(
+      context{text(fill: main-color-state.at(here()))[#it]}
+    )
     show heading.where(level: 1): it => [
       #section-page.update(x =>
         true
