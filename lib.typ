@@ -76,6 +76,8 @@
 
   show figure.caption: set text(script-size)
 
+  show bibliography: set heading(level: 2)
+
   show raw: set text(size: script-size)
 
   let page-number-int() = {

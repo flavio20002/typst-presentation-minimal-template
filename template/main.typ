@@ -26,7 +26,8 @@
 - #lorem(10)
   - #lorem(10)
   - #lorem(10)
-  - #lorem(10)
+  - #lorem(10) @harry @electronic.
+
 
 == One column image
 
@@ -117,3 +118,5 @@
 == Slide title
 
 #lorem(50)
+
+#bibliography("bibliography.yaml")
