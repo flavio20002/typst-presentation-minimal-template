@@ -14,7 +14,7 @@
   logo-light: image("./logo_light.svg"),
   cover: image("./image_1.jpg"),
   main-color: rgb("#E30512"),
-  lang: "it",
+  lang: "en",
 )
 
 = This is a section
