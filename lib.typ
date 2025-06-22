@@ -1,6 +1,5 @@
-#let script-size = 15pt
+#let script-size = 0.75em
 #let normal-size = 20pt
-#let large-size = 30pt
 #let very-large-size = 38pt
 #let huge-size = 58pt
 
