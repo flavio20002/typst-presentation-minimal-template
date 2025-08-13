@@ -1,8 +1,3 @@
-#let script-size = 0.75em
-#let normal-size = 20pt
-#let very-large-size = 38pt
-#let huge-size = 58pt
-
 #let logo-light-image = state("logo-light-image", none)
 
 #let section-page = state("section-page", false)
@@ -54,13 +49,19 @@
   logo-light: none,
   index-title: none,
   lang: "en",
+  text-size: 20pt,
+  heading-1-size: 2.9em,
+  heading-2-size: 1.9em,
+  caption-size: 0.75em,
+  cover-title-size: 3.1em,
+  cover-subtitle-size: 1.5em,
   body
 ) = {
   set document(title: title, author: author)
   main-color-state.update(x =>
     main-color
   )
-  set text(fill: text-color-dark, size: normal-size, lang: lang)
+  set text(fill: text-color-dark, size: text-size, lang: lang)
   set underline(offset: 3pt)
   set page(
     paper: "presentation-" + aspect-ratio,
@@ -73,16 +74,16 @@
 
   set figure(gap: 20pt)
 
-  show figure.caption: set text(script-size)
+  show figure.caption: set text(caption-size)
 
   show bibliography: set heading(level: 2)
 
-  show raw: set text(size: script-size)
+  show raw: set text(size: caption-size)
 
   let page-number-int() = {
     let lastpage-number = context{counter(page).final(here()).at(0)}
     set align(right)
-    text(size: script-size)[
+    text(size: caption-size)[
       #counter(page).display("1 / 1", both: true)
     ]
   }
@@ -92,7 +93,7 @@
       #pad(bottom: 0.5cm, right: 0.5cm)[
         #let lastpage-number = context{counter(page).final(here()).at(0)}
         #set align(right)
-        #text(size: script-size)[
+        #text(size: caption-size)[
           #counter(page).display("1 / 1", both: true)
         ]
       ]
@@ -144,16 +145,16 @@
       #pad(left: 1.5cm, right: 10cm, y: 1.5cm)[
         #v(1fr)
         #block(width: 15cm)[ #par(leading: 1cm)[
-            #text(size: 62pt, weight: "regular", upper(title))
+            #text(size: cover-title-size, weight: "regular", upper(title))
         ]]
         #v(0.5cm)      
-        #text(size: 30pt, weight: "regular", sub-title)
+        #text(size: cover-subtitle-size, weight: "regular", sub-title)
         #v(1fr)
         #if author != none {
-            text(size: normal-size)[#author]
+            text(size: text-size)[#author]
         } --
         #if date != none {
-            text(size: normal-size)[#date]
+            text(size: text-size)[#date]
         }
       ]
     ]
@@ -188,7 +189,7 @@
             #pad(bottom: 0.5cm, right: 0.5cm)[
             #let lastpage-number = context{counter(page).final(here()).at(0)}
               #set align(right)
-              #text(fill: white, size: script-size)[
+              #text(fill: white, size: caption-size)[
                 #counter(page).display("1 / 1", both: true)
               ]
             ]
@@ -208,7 +209,7 @@
   set align(horizon)
 
   // Display the summary page.
-  place(top + left, dy: -4cm,  block(height: 3cm, width: if logo!= none {100% - 2.5cm} else {100%}, align(horizon, text(size: very-large-size, weight: "regular", index-title))))
+  place(top + left, dy: -4cm,  block(height: 3cm, width: if logo!= none {100% - 2.5cm} else {100%}, align(horizon, text(size: heading-2-size, weight: "regular", index-title))))
   context{
     let elems = query(selector(heading.where(level: 1)).after(here()))
     enum(tight: false, ..elems.map(elem => {link((page: elem.location().page() + 1, x: 0pt, y: 0pt),elem.body)}))
@@ -222,7 +223,8 @@
         true
       )
       #pagebreak(weak: true)
-      #set text(huge-size, fill: white, weight: "bold")
+      #set text(text-size)
+      #set text(heading-1-size, fill: white, weight: "bold")
       #move(dy: -1.5cm, place(horizon, pad(right:5cm, upper(it.body))))
     ]
 
@@ -231,7 +233,8 @@
         false
       )
       pagebreak()
-      set text(very-large-size, weight: "regular")
+      set text(text-size)
+      set text(heading-2-size, weight: "regular")
       place(top + left, dy: -4cm,  block(height: 3cm, width: if logo!= none {100% - 2.5cm} else {100%}, align(horizon, it.body)))
     }
 
@@ -240,7 +243,7 @@
     context{
       let elems = query(selector(heading.where(level: 2)).before(here()))
       let heading2 = elems.last().body
-      place(top + left, dy: -4cm,  block(height: 3cm, width: if logo!= none {100% - 2.5cm} else {100%}, align(horizon, [#block(below: 0em, above: 0em, text(heading2, size: very-large-size, weight: "regular")) #block(below: 0em, above: 0.65em, text(it.body, size: normal-size, weight: "regular"))])))
+      place(top + left, dy: -4cm,  block(height: 3cm, width: if logo!= none {100% - 2.5cm} else {100%}, align(horizon, [#block(below: 0em, above: 0em, text(heading2, size: heading-2-size, weight: "regular")) #block(below: 0em, above: 0.65em, text(it.body, size: text-size, weight: "regular"))])))
     }
   }
 
