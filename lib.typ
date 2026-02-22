@@ -55,6 +55,8 @@
   caption-size: 0.75em,
   cover-title-size: 3.1em,
   cover-subtitle-size: 1.5em,
+  top-margin: 4cm,
+  bottom-margin: 1.5cm,
   body
 ) = {
   set document(title: title, author: author)
@@ -203,13 +205,13 @@
         ]
     }
       },
-      margin: (top:4cm, bottom: 1cm, left: 1.5cm, right: 1.5cm)
+      margin: (top:top-margin, bottom: bottom-margin, left: 1.5cm, right: 1.5cm)
     )
 
   set align(horizon)
 
   // Display the summary page.
-  place(top + left, dy: -4cm,  block(height: 3cm, width: if logo!= none {100% - 2.5cm} else {100%}, align(horizon, text(size: heading-2-size, weight: "regular", index-title))))
+  place(top + left, dy: -1*top-margin,  block(height: 3cm, width: if logo!= none {100% - 2.5cm} else {100%}, align(horizon, text(size: heading-2-size, weight: "regular", index-title))))
   context{
     let elems = query(selector(heading.where(level: 1)).after(here()))
     enum(tight: false, ..elems.map(elem => {link((page: elem.location().page() + 1, x: 0pt, y: 0pt),elem.body)}))
@@ -235,7 +237,7 @@
       pagebreak()
       set text(text-size)
       set text(heading-2-size, weight: "regular")
-      place(top + left, dy: -4cm,  block(height: 3cm, width: if logo!= none {100% - 2.5cm} else {100%}, align(horizon, it.body)))
+      place(top + left, dy: -1*top-margin,  block(height: 3cm, width: if logo!= none {100% - 2.5cm} else {100%}, align(horizon, it.body)))
     }
 
     show heading.where(level: 3): it => {
@@ -243,7 +245,7 @@
     context{
       let elems = query(selector(heading.where(level: 2)).before(here()))
       let heading2 = elems.last().body
-      place(top + left, dy: -4cm,  block(height: 3cm, width: if logo!= none {100% - 2.5cm} else {100%}, align(horizon, [#block(below: 0em, above: 0em, text(heading2, size: heading-2-size, weight: "regular")) #block(below: 0em, above: 0.65em, text(it.body, size: text-size, weight: "regular"))])))
+      place(top + left, dy: -1*top-margin,  block(height: 3cm, width: if logo!= none {100% - 2.5cm} else {100%}, align(horizon, [#block(below: 0em, above: 0em, text(heading2, size: heading-2-size, weight: "regular")) #block(below: 0em, above: 0.65em, text(it.body, size: text-size, weight: "regular"))])))
     }
   }
 
