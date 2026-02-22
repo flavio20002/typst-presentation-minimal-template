@@ -56,7 +56,7 @@
   cover-title-size: 3.1em,
   cover-subtitle-size: 1.5em,
   top-margin: 4cm,
-  bottom-margin: 1.5cm,
+  bottom-margin: 1cm,
   body
 ) = {
   set document(title: title, author: author)
