@@ -48,6 +48,7 @@
   logo: none,
   logo-light: none,
   index-title: none,
+  show-index: true,
   lang: "en",
   text-size: 20pt,
   heading-1-size: 2.9em,
@@ -208,15 +209,17 @@
       margin: (top:top-margin, bottom: bottom-margin, left: 1.5cm, right: 1.5cm)
     )
 
-  set align(horizon)
+    set align(horizon)
 
-  // Display the summary page.
-  place(top + left, dy: -1*top-margin,  block(height: 3cm, width: if logo!= none {100% - 2.5cm} else {100%}, align(horizon, text(size: heading-2-size, weight: "regular", index-title))))
-  context{
-    let elems = query(selector(heading.where(level: 1)).after(here()))
-    enum(tight: false, ..elems.map(elem => {link((page: elem.location().page() + 1, x: 0pt, y: 0pt),elem.body)}))
-  }
-  
+    if show-index == true [
+      // Display the summary page.
+      #place(top + left, dy: -1*top-margin,  block(height: 3cm, width: if logo!= none {100% - 2.5cm} else {100%}, align(horizon, text(size: heading-2-size, weight: "regular", index-title))))
+      #context{
+        let elems = query(selector(heading.where(level: 1)).after(here()))
+        enum(tight: false, ..elems.map(elem => {link((page: elem.location().page() + 1, x: 0pt, y: 0pt),elem.body)}))
+      }
+    ]
+
     show link: it => underline(
       context{text(fill: main-color-state.at(here()))[#it]}
     )
