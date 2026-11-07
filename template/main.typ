@@ -4,12 +4,21 @@
 //#show math.equation: set text(font: "Lato Math")
 //#show raw: set text(font: "Fira Code")
 
+#let polygon-custom-style = (
+  (0.5cm, 2.4cm),
+  (0.5cm, 2.7cm),
+  (29cm, 2.7cm),
+  (28cm, 2.4cm),
+)
+
 #show: project.with(
   title: "Minimalist presentation template",
   sub-title: "This is where your presentation begins",
   author: "Flavio Barisi",
   date: "10/08/2023",
   index-title: "Contents",
+  slide-polygon-style: "custom", // standard (default), wide_top, wide_bottom, custom
+  slide-polygon-style-custom: polygon-custom-style,
   logo: image("./logo.svg"),
   logo-light: image("./logo_light.svg"),
   cover: image("./image_1.jpg"),
