@@ -2,6 +2,7 @@
 
 #let section-page = state("section-page", false)
 #let main-color-state = state("main-color-state", none)
+#let slide-polygon-style-state = state("slide-polygon-style-state", none)
 
 
 #let set-main-color(main-color) = {
@@ -49,6 +50,7 @@
   logo-light: none,
   index-title: none,
   show-index: true,
+  slide-polygon-style: "standard",
   lang: "en",
   text-size: 20pt,
   heading-1-size: 2.9em,
@@ -77,6 +79,8 @@
 
   set figure(gap: 20pt)
 
+  slide-polygon-style-state.update(slide-polygon-style)
+
   show figure.caption: set text(caption-size)
 
   show bibliography: set heading(level: 2)
@@ -103,15 +107,41 @@
     ]
   }
 
-    let slide-polygon() = {
-      place(top+left, context{polygon(
-        fill: main-color-state.at(here()),
-          (0cm, 0cm),
-          (0cm, 3cm),
-          (0.4cm, 3cm),
-          (0.4cm, 0cm),
-      )})
+  let slide-polygon-styles = (
+    standard: (
+      (0cm, 0cm),
+      (0cm, 3cm),
+      (0.4cm, 3cm),
+      (0.4cm, 0cm),
+    ),
+    wide_top: (
+      (0cm, 0cm),
+      (0cm, 0.3cm),
+      (30cm, 0.3cm),
+      (30cm, 0cm),
+    ),
+    wide_bottom: (
+      (0.5cm, 2.4cm),
+      (0.5cm, 2.7cm),
+      (29.1cm, 2.7cm),
+      (29.1cm, 2.4cm),
+    ),
+  )
+
+  let slide-polygon() = {
+    let style = slide-polygon-style-state.at(here())
+
+    let points = if type(style) == str {
+      slide-polygon-styles.at(style)
+    } else {
+      slide-polygon-style
     }
+
+    place(top+left, context{polygon(
+      fill: main-color-state.at(here()),
+      ..points
+    )})
+  }
 
     let slide-logo(theLogo) = {
       if theLogo!= none {
