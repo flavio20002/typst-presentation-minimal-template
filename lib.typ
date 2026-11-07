@@ -51,7 +51,6 @@
   index-title: none,
   show-index: true,
   slide-polygon-style: "standard",
-  slide-polygon-style-custom: none,
   lang: "en",
   text-size: 20pt,
   heading-1-size: 2.9em,
@@ -132,10 +131,10 @@
   let slide-polygon() = {
     let style = slide-polygon-style-state.at(here())
 
-    let points = if style == "custom" {
-      slide-polygon-style-custom
-    } else {
+    let points = if type(style) == str {
       slide-polygon-styles.at(style)
+    } else {
+      slide-polygon-style
     }
 
     place(top+left, context{polygon(

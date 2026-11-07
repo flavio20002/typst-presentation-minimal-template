@@ -17,8 +17,7 @@
   author: "Flavio Barisi",
   date: "10/08/2023",
   index-title: "Contents",
-  slide-polygon-style: "custom", // standard (default), wide_top, wide_bottom, custom
-  slide-polygon-style-custom: polygon-custom-style,
+  // slide-polygon-style: polygon-custom-style, // "standard" (default), "wide_top", "wide_bottom" or array of points
   logo: image("./logo.svg"),
   logo-light: image("./logo_light.svg"),
   cover: image("./image_1.jpg"),
